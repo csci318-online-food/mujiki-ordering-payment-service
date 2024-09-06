@@ -1,0 +1,6 @@
+spring:
+  profiles: dev
+  server:
+    port: 87
+  payment-service:
+    url: http://localhost:87
