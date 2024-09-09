@@ -29,6 +29,10 @@ address:
   url:
     service: http://localhost:86/api/address
 
+user:
+  url:
+    service: http://localhost:81/api/user
+
 
 # Server Configuration
 server:
