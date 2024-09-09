@@ -6,6 +6,7 @@ import com.csci318.microservice.payment.Services.PaymentService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -25,8 +26,14 @@ public class PaymentController {
     }
 
     @GetMapping("/user/{userId}")
-    public ResponseEntity<PaymentDTOResponse> getPaymentByUserId(@PathVariable UUID userId) {
-        PaymentDTOResponse paymentDTOResponse = paymentService.getPaymentByUserId(userId);
+    public ResponseEntity<List<PaymentDTOResponse>> allPaymentFromUser(@PathVariable UUID userId) {
+        List<PaymentDTOResponse> paymentDTOResponses = paymentService.allPaymentFromUser(userId);
+        return ResponseEntity.ok(paymentDTOResponses);
+    }
+
+    @PutMapping("/update-balance/{paymentId}")
+    public ResponseEntity<PaymentDTOResponse> updateBalance(@RequestBody PaymentDTORequest paymentDTORequest, @PathVariable UUID paymentId) {
+        PaymentDTOResponse paymentDTOResponse = paymentService.updateBalance(paymentDTORequest, paymentId);
         return ResponseEntity.ok(paymentDTOResponse);
     }
 }

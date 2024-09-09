@@ -7,12 +7,13 @@ import com.csci318.microservice.payment.Mappers.PaymentMapper;
 import com.csci318.microservice.payment.Repositories.PaymentRepository;
 import com.csci318.microservice.payment.Services.PaymentService;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import com.csci318.microservice.payment.Entities.Relation.User;
 
+import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
@@ -35,16 +36,14 @@ public class PaymentServiceImpl implements PaymentService {
         this.paymentMapper = paymentMapper;
     }
 
-    public PaymentDTOResponse getPaymentByUserId(UUID userId) {
-        Payment payment = this.paymentRepository.findByUserId(userId);
-        if (payment == null) {
-            throw new RuntimeException("Payment not found");
-        }
-        return this.paymentMapper.toDtos(payment);
+    public List<PaymentDTOResponse> allPaymentFromUser (UUID userId) {
+        List<Payment> payments = this.paymentRepository.findAllByUserId(userId);
+        return this.paymentMapper.toDtos(payments);
     }
 
+    @Override
     public PaymentDTOResponse createPayment(PaymentDTORequest paymentDTORequest) {
-        User user = restTemplate.getForObject(USER_URL + "/" + paymentDTORequest.getUserId(), User.class);
+        User user = restTemplate.getForObject(USER_URL + "/findById/" + paymentDTORequest.getUserId(), User.class);
         if (user == null) {
             throw new RuntimeException("User not found");
         }
@@ -64,5 +63,14 @@ public class PaymentServiceImpl implements PaymentService {
         } catch (Exception e) {
             throw new RuntimeException("Failed to create payment");
         }
+    }
+
+    @Override
+    public PaymentDTOResponse updateBalance(PaymentDTORequest paymentDTORequest, UUID paymentId) {
+        Payment payment = this.paymentRepository.findById(paymentId)
+                .orElseThrow(() -> new RuntimeException("Payment not found"));
+        payment.setBalance(paymentDTORequest.getBalance());
+        this.paymentRepository.save(payment);
+        return this.paymentMapper.toDtos(payment);
     }
 }

@@ -3,9 +3,12 @@ package com.csci318.microservice.payment.Mappers;
 import com.csci318.microservice.payment.DTOs.PaymentDTORequest;
 import com.csci318.microservice.payment.DTOs.PaymentDTOResponse;
 import com.csci318.microservice.payment.Entities.Payment;
+import jakarta.persistence.Entity;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class PaymentMapper implements Mapper<Payment, PaymentDTOResponse, PaymentDTOResponse> {
     @Override
     public PaymentDTOResponse toDtos(Payment entity) {

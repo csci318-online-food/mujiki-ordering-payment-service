@@ -33,6 +33,10 @@ user:
   url:
     service: http://localhost:81/api/user
 
+order:
+  url:
+    service: http://localhost:88/api/order
+
 
 # Server Configuration
 server:
