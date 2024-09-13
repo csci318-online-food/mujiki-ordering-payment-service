@@ -2,7 +2,8 @@ package com.csci318.microservice.payment.Services.Impl;
 
 import com.csci318.microservice.payment.DTOs.PaymentDTORequest;
 import com.csci318.microservice.payment.DTOs.PaymentDTOResponse;
-import com.csci318.microservice.payment.Entities.Payment;
+import com.csci318.microservice.payment.Domain.Entities.Payment;
+import com.csci318.microservice.payment.Domain.Relations.User;
 import com.csci318.microservice.payment.Mappers.PaymentMapper;
 import com.csci318.microservice.payment.Repositories.PaymentRepository;
 import com.csci318.microservice.payment.Services.PaymentService;
@@ -11,7 +12,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import com.csci318.microservice.payment.Entities.Relation.User;
 
 import java.util.List;
 import java.util.Random;

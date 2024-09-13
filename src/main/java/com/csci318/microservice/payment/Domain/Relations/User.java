@@ -1,4 +1,4 @@
-package com.csci318.microservice.payment.Entities.Relation;
+package com.csci318.microservice.payment.Domain.Relations;
 
 import com.csci318.microservice.payment.Constants.Roles;
 
