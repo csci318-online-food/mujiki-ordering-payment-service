@@ -13,7 +13,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class PaymentDTORequest {
     private UUID userId;
-    private String bank;
+    private String holderName;
     private String cardNumber;
     private Double balance;
 }

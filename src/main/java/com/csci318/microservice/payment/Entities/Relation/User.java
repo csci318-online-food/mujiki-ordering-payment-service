@@ -1,6 +1,6 @@
 package com.csci318.microservice.payment.Entities.Relation;
 
-import com.csci318.microservice.payment.Constants.HttpStatus.Roles;
+import com.csci318.microservice.payment.Constants.Roles;
 
 import java.util.UUID;
 

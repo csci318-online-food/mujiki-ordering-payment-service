@@ -15,7 +15,7 @@ public class PaymentMapper implements Mapper<Payment, PaymentDTOResponse, Paymen
         PaymentDTOResponse dto = new PaymentDTOResponse();
         dto.setId(entity.getId());
         dto.setUserId(entity.getUserId());
-        dto.setBank(entity.getBank());
+        dto.setHolderName(entity.getHolderName());
         dto.setCardNumber(entity.getCardNumber());
         dto.setBalance(entity.getBalance());
         return dto;
@@ -25,7 +25,7 @@ public class PaymentMapper implements Mapper<Payment, PaymentDTOResponse, Paymen
     public Payment toEntities(PaymentDTOResponse dto) {
         Payment entity = new Payment();
         entity.setUserId(dto.getUserId());
-        entity.setBank(dto.getBank());
+        entity.setHolderName(dto.getHolderName());
         entity.setCardNumber(dto.getCardNumber());
         entity.setBalance(dto.getBalance());
         return entity;

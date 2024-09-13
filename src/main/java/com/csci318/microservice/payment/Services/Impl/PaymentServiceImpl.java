@@ -50,7 +50,7 @@ public class PaymentServiceImpl implements PaymentService {
         try {
             Payment payment = new Payment();
             payment.setUserId(paymentDTORequest.getUserId());
-            payment.setBank(paymentDTORequest.getBank());
+            payment.setHolderName(paymentDTORequest.getHolderName());
             payment.setCardNumber(paymentDTORequest.getCardNumber());
 
             // Generate a random balance

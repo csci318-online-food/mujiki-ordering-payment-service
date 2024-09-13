@@ -23,16 +23,14 @@ public class Payment {
     @Column(name = "user_id")
     private UUID userId;
 
-    @Column(name = "bank_name")
-    private String bank;
+    @Column(name = "holder_name")
+    private String holderName; // holder_name
 
     @Column(name = "card_number")
     private String cardNumber;
 
     @Column(name = "balance")
     private Double balance;
-
-    // NO need for audit data fields
 
 
 
