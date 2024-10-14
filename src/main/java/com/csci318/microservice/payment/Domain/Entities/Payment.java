@@ -1,5 +1,7 @@
 package com.csci318.microservice.payment.Domain.Entities;
 
+import com.csci318.microservice.payment.Domain.Relations.User;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,6 +23,7 @@ public class Payment {
     private UUID id;
 
     @Column(name = "user_id")
+    @ManyToOne(targetEntity = User.class)
     private UUID userId;
 
     @Column(name = "holder_name")
@@ -31,7 +34,4 @@ public class Payment {
 
     @Column(name = "balance")
     private Double balance;
-
-
-
 }

@@ -2,10 +2,17 @@ package com.csci318.microservice.payment.Domain.Relations;
 
 import com.csci318.microservice.payment.Constants.Roles;
 
-import java.util.UUID;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class User {
-    private UUID id;
+    private String id;
     private String username;
     private String password;
     private String firstName;

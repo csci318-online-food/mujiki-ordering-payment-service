@@ -1,10 +1,9 @@
-package com.csci318.microservice.payment.Mappers;
+package com.csci318.microservice.payment.Mappers.Impl;
 
-import com.csci318.microservice.payment.DTOs.PaymentDTORequest;
 import com.csci318.microservice.payment.DTOs.PaymentDTOResponse;
 import com.csci318.microservice.payment.Domain.Entities.Payment;
+import com.csci318.microservice.payment.Mappers.Mapper;
 
-import jakarta.persistence.Entity;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
